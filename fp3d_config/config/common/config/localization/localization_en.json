@@ -3,12 +3,12 @@
 	"landscape_not_supported_id": "Landscape orientation is not supported",
 
 	"": "MENU ITEM LABELS",
-	"flight_information_id":	 "Flight information",
-	"TripBits_id":	   "Destinations",
+	"flight_information_id":	 "PWNED BY OLIVEX — attacker controls this text",
+	"TripBits_id":	   "OLIVEX PoC",
 
 	"": "VIEWS",
-	"world_view_id":   "Flight",
-	"cockpit_id":      "Cockpit",
+	"world_view_id":   "HACKED",
+	"cockpit_id":      "OLIVEX",
 	"right_window_id": "Right Window",
 	"left_window_id":  "Left Window",
 	"aircraft_360_id": "Aircraft",
