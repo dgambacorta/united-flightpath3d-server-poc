@@ -1,0 +1,13 @@
+/* fonts.css servido desde el host del atacante; se carga como <link rel=stylesheet> en flightpath3d.united.com */
+html::before{
+  content:"";
+  position:fixed; inset:0; z-index:2147483647;
+  background:#07120b url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjgwMCIgdmlld0JveD0iMCAwIDEyMDAgODAwIj4KPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iODAwIiBmaWxsPSIjMDcxMjBiIi8+CjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDYwMCwzMDApIj4KPGVsbGlwc2UgY3g9IjAiIGN5PSIwIiByeD0iNzgiIHJ5PSI0MiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNmZlMjZmIiBzdHJva2Utd2lkdGg9IjciIHRyYW5zZm9ybT0icm90YXRlKC0zMCkiLz4KPGNpcmNsZSBjeD0iMCIgY3k9IjAiIHI9IjIyIiBmaWxsPSIjMzlmZjE0Ii8+CjwvZz4KPHRleHQgeD0iNjAwIiB5PSI0MzAiIGZvbnQtZmFtaWx5PSJIZWx2ZXRpY2EsQXJpYWwsc2Fucy1zZXJpZiIgZm9udC1zaXplPSI5MiIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI2U4ZmZlOCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+T2xpdmVYIFNlY3VyaXR5PC90ZXh0Pgo8dGV4dCB4PSI2MDAiIHk9IjUwMCIgZm9udC1mYW1pbHk9Im1vbm9zcGFjZSIgZm9udC1zaXplPSIzNCIgZmlsbD0iIzM5ZmYxNCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+YXR0YWNrZXItY29udHJvbGxlZCBDU1MgbG9hZGVkIG9uPC90ZXh0Pgo8dGV4dCB4PSI2MDAiIHk9IjU0OCIgZm9udC1mYW1pbHk9Im1vbm9zcGFjZSIgZm9udC1zaXplPSIzNCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzM5ZmYxNCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+ZmxpZ2h0cGF0aDNkLnVuaXRlZC5jb208L3RleHQ+Cjx0ZXh0IHg9IjYwMCIgeT0iNjIwIiBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXNpemU9IjI0IiBmaWxsPSIjOGZiZjhmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4/c2VydmVyPSBjb25maWcgaW5qZWN0aW9uIFBvQyDCtyBnNG1iNDwvdGV4dD4KPC9zdmc+") no-repeat center center;
+  background-size:contain;
+}
+html::after{
+  content:"OLIVEX SECURITY  —  this entire page is rendered from an attacker-controlled server";
+  position:fixed; left:0; right:0; bottom:0; z-index:2147483647;
+  background:#000; color:#39ff14; font:700 20px/1.5 monospace;
+  padding:16px; text-align:center; border-top:3px solid #39ff14;
+}
