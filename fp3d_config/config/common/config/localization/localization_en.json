@@ -1,0 +1,42 @@
+{
+	"": "OVERLAY FOR SMALL SCREENS",
+	"landscape_not_supported_id": "Landscape orientation is not supported",
+
+	"": "MENU ITEM LABELS",
+	"flight_information_id":	 "Flight information",
+	"TripBits_id":	   "Destinations",
+
+	"": "VIEWS",
+	"world_view_id":   "Flight",
+	"cockpit_id":      "Cockpit",
+	"right_window_id": "Right Window",
+	"left_window_id":  "Left Window",
+	"aircraft_360_id": "Aircraft",
+
+	"": "UNIT SWITCHER",
+	"metric_id":	   "km",
+	"imperial_id":	   "Miles",
+	
+	"": "MECCA PAGE, HIGHLIGHTS",
+	"N_id":  "N",
+	"S_id":  "S",
+	"W1_id": "W",
+	"E_id":  "E",
+	"NE_id": "NE",
+	"SE_id": "SE",
+	"SW_id": "SW",
+	"NW_id": "NW",
+	
+	"": "CLOUD WIDGET",
+	"Gate_id": "Gate",
+    "terminal_id": "Terminal",
+    "ac_on_the_ground_id": "You're on the ground",
+    "check_back_id": "Check back to view the map when your plane starts moving",
+    "departed_id": "Departed",
+    "estimated_arrival_id": "Estimated arrival",
+    "en_route_id": "En Route",
+	
+	"": "AD (GAM/GPT)",
+	"sponsored_id": "Sponsored"
+	
+}

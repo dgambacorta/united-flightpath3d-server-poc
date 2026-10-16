@@ -1,0 +1,19 @@
+<root>
+	<lang>en</lang>
+	<thousands-separator/>	
+	<unit-label>
+		<kmph>kph</kmph>
+		<mph>mph</mph>
+		<feet>ft</feet>
+		<meters>m</meters>
+		<cels>°C</cels>
+		<fahr>°F</fahr>
+		<km>km</km>
+		<mi>mi</mi>
+		<time-imperial-am>am</time-imperial-am>
+		<time-imperial-pm>pm</time-imperial-pm>
+		<time-metric>%H:%M</time-metric>
+		<time-imperial>%l:%M %p</time-imperial>
+		<timeinterval>%Nh %Omin</timeinterval>
+	</unit-label>
+</root>

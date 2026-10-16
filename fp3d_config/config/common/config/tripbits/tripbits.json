@@ -1,0 +1,71 @@
+{
+	"": "COMMENT - for local TripBits DB use '$(SERVER)/fp3d_fcgi/tripbits'",
+	"": "COMMENT - for external TripBits DB use 'https://www.tripbits.com/fp3d_fcgi/tripbits'",
+	"serviceBaseURI": "$(SERVER)/fp3d_fcgi/tripbits",
+
+	"": "COMMENT - for local DB use '$(SERVER)/'",
+	"": "COMMENT - for external DB leave empty",
+	"contentBaseURI": "",
+
+	"": "COMMENT - for local DB use '$(SERVER)/'",
+	"": "COMMENT - for external DB use 'https://project116.sfo3.cdn.digitaloceanspaces.com/'",
+	"storagePath": "$(SERVER)/",
+
+	"": "COMMENT - limits video content if using external db per customer settings",
+	"customerName": "",
+
+	"settings": {
+		"language-override": {
+			"": "COMMENT - app language -> tb content language",
+			"en_qa": "en"
+		}
+	},
+
+	"groups": [
+		{
+			"name": "tripbits",
+			"assets": {},
+			"visibility": {
+				"minActiveAltitude": "0",
+				"maxActiveAltitude": "2e4"
+			},
+			"styles": [
+				{
+					"name": "common",
+					"icon": {
+						"source": {},
+						"origin": {
+							"horizontal": "center",
+							"vertical": "bottom",
+							"offset": {
+								"horizontal": 0.0,
+								"vertical": 0.0
+							}
+						},
+						"scaleFactor": 0.4,
+						"opacity": 0.9
+					}
+				},
+				{
+					"name": "common-active",
+					"icon": {
+						"source": {},
+						"origin": {
+							"horizontal": "center",
+							"vertical": "bottom",
+							"offset": {
+								"horizontal": 0.0,
+								"vertical": 0.0
+							}
+						},
+						"scaleFactor": 0.5,
+						"opacity": 0.9
+					}
+				}
+			],
+			"title": {
+				"services": []
+			}
+		}
+	]
+}

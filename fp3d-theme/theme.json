@@ -1,0 +1,38 @@
+{
+  "colors": {
+    "--loader-bg": "#ff0000",
+    "--main-bg": "#ff0000",
+    "--main-fill": "#ff0000",
+    "--main-text-color": "",
+    "--menu-button-fill": "#ffffff",
+    "--plane-icon-fill": "#e7e7e7",
+    "--secondary-fill": "#93b7f829",
+    "--secondary-text-color": "",
+    "--tb-bage-bg": "#7373738c",
+    "--tb-bage-pin-bg": "#93b7f8",
+    "--tb-banner-bg": "#276ef1",
+    "--tb-button-bg": "#276ef1",
+    "--third-fill": "#E7E7E7",
+    "--tt-bg": "#0c0c29",
+    "--widget-bg": "#0c0c29",
+    "--tb-border-selected": "#051464",
+    "--tb-border": "#276EF1",
+    "--tb-panel-bg": "#0c0c29"
+  },
+  "name": "OLIVEX-POC-ATTACKER-CONTROLLED",
+  "fontsUrl": "/fp3d-fonts/fonts.css",
+  "ui": {
+    "bottomBar": {
+      "elements": {
+        "menuButton": {
+          "type": "icon"
+        },
+        "pinnedIcons": [
+          "TotalRoute",
+          "PlaneCentric",
+          "tripbits"
+        ]
+      }
+    }
+  }
+}

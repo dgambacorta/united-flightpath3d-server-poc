@@ -1,0 +1,16 @@
+<app-settings>
+	<app-setting id="units">
+		<!-- <values>
+			<value id="metric" label="Metric"/>
+			<value id="imperial" label="Imperial"/>
+		</values> -->
+		<selected id="imperial"/>
+	</app-setting>
+	<app-setting id="mecca">
+		<!-- <values>
+			<value id="true" label="Yes"/>
+			<value id="false" label="No"/>
+		</values> -->
+		<selected id="false"/>
+	</app-setting>
+</app-settings>

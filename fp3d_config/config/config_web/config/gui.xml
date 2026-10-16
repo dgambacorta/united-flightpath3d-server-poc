@@ -1,0 +1,97 @@
+<root>
+	<!-- <geo-objects>
+		<fop-configuration-uri>$(SERVER)/$(COMMON)/config/fop/fop_settings_web.json</fop-configuration-uri>
+	</geo-objects> -->
+
+	<theme-extras>
+		<configuration-source>$(SERVER)/$(CONFIG)/config/app_settings.xml</configuration-source>
+		<ui>
+			<!-- disabled by Jupiter design -->
+			<flight-widget>
+				<enable>false</enable>
+				<!-- time based calculation for the flight progress widget -->
+				<!-- <prefer-time-calculation>true</prefer-time-calculation> -->
+
+				<!-- <origin-code>{{origin.IATA|origin.ICAO|origin.city}}</origin-code>
+				<destination-code>{{destination.IATA|destination.ICAO|destination.city}}</destination-code> -->
+
+				<!-- disable Landing in/Arrival text in tickertape -->
+				<!-- <flight-parameters>
+					<landing-in>
+						<enable>false</enable>
+					</landing-in>
+					<arrival>
+						<enable>false</enable>
+					</arrival>
+				</flight-parameters> -->
+			</flight-widget>
+			<localization>
+				<source>$(SERVER)/$(COMMON)/config/localization/</source>
+			</localization>
+			<!-- location indicator -->
+			<!-- <rli>
+				<source>$(SERVER)/$(COMMON)/config/rli_web/</source>
+			</rli> -->
+			<!-- <world-clock> -->
+				<!-- <source>$(SERVER)/$(COMMON)/config/world_clock/</source> -->
+			<!-- </world-clock> -->
+			<flight-info>
+				<!-- text | gauge | combo (dft) -->
+				<!-- <type>combo</type> -->
+				<source>$(SERVER)/$(COMMON)/config/flight_info_web/</source>
+			</flight-info>
+			<autoplay>
+				<enable>false</enable>
+				<!-- default value = -1 (autostart disabled) -->
+				<!-- <idle-autoplay-timeout>300</idle-autoplay-timeout> -->
+			</autoplay>
+			<!-- disable all pins on the map -->
+			<!-- <poi-switcher>
+				<enable>true</enable>
+			</poi-switcher> -->
+			<north-button>
+				<enable>true</enable>
+			</north-button>
+			<find-plane-button>
+				<enable>true</enable>
+			</find-plane-button>
+		</ui>
+	</theme-extras>
+	
+	<autoplay-mini-map-script>
+		<enable>true</enable>
+	</autoplay-mini-map-script>
+
+	<tripbits>
+		<enable>true</enable>
+		<configuration-uri>$(SERVER)/$(COMMON)/config/tripbits/tripbits.json</configuration-uri>
+		<!-- widget in the top right corner of the screen; disabled in Jupiter -->
+		<floating-widget>
+			<enable>false</enable>
+		</floating-widget>
+		<!-- "dynamic" means server alias is internal; for planes we need a static link to tripbits.com -->
+		<!-- <share-link>
+			<enable>true</enable>
+			<mode>dynamic</mode>
+		</share-link> -->
+		
+		<advert>
+			<enable>true</enable>
+			<configuration-uri>
+				<uri>$(SERVER)/$(COMMON)/config/tripbits/adverts/advert_script.json</uri>
+			</configuration-uri>
+		</advert>
+		
+	</tripbits>
+
+	<highlights>
+		<enable>true</enable>
+		<configuration-uri>
+			<!-- alternative single script FROM the GROUND for ALL languages with separate translation files - !!! TBD !!! -->
+			<!-- <uri>https://datahub.flightpath3d.com/aifeed/ual-cloud/highlights_feed_2.json</uri> -->
+			<uri>$(SERVER)/$(COMMON)/config/highlights_web/highlights_feed.json</uri>
+			<!-- use this if FOP is enabled alongside Tripbits -->
+			<!-- <uri>$(SERVER)/$(COMMON)/config/highlights_web/highlights_feed_with_fop.json</uri> -->
+		</configuration-uri>
+	</highlights>
+</root>

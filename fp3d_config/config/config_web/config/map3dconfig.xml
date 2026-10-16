@@ -1,0 +1,1081 @@
+<root>
+  <config-params class-type="ConfigParams">
+    <verticalExaggeration>1</verticalExaggeration>
+    <debugInfoEnabled>false</debugInfoEnabled>
+    <profilerEnabled>false</profilerEnabled>
+    <content-version>106026</content-version>
+  </config-params>
+  <input-handler class-type="BasicInputHandler">
+    <skip-points>2</skip-points>
+    <!-- camera limitations on poles, globe spinning against North -->
+    <poles-restriction>
+      <enabled>false</enabled>
+    </poles-restriction>
+    <!-- necessary for webapp -->
+    <gestures>
+      <!-- right mouse button -->
+      <secondaryDrag>
+        <enabled>true</enabled>
+      </secondaryDrag>
+      <pan>
+        <enabled>true</enabled>
+      </pan>
+      <rotation>
+        <enabled>true</enabled>
+      </rotation>
+      <tilt>
+        <enabled>true</enabled>
+      </tilt>
+      <pinch>
+        <enabled>true</enabled>
+      </pinch>
+    </gestures>
+  </input-handler>
+  <navigator class-type="RealPACNavigator">
+    <gps-sources>
+      <!-- no multicast for webapp -->
+      <source class-type="CloudHttpGpsSource">
+        <url>https://datahub.flightpath3d.com/flightapi</url>
+        <token>1QzinOJfhjgWI9Mx6tTtD9lgc2u2dUscRQtbdzQRKwTo90mp52AXDDtx738pfVNdB5xBl60zHHh588BVeaOUy6tHTohmROGqn8eh7597CZuAn58o80emtKCoZuBDJ6b8</token>
+      </source>
+    </gps-sources>
+    <airport-info-url>$(SERVER)/$(DYNAMIC)/public/index.php?lang=$(LANG)&amp;_url=/flightinfo/getAirportInfo</airport-info-url>
+    <history-url>$(SERVER)/fp3d_logs/flight-history.log</history-url>
+    <reqInterval>2</reqInterval>
+    <flightPhaseList class-type="FlightPhaseList" included-from="$(SERVER)/$(COMMON)/config/flight_phases_web.xml">
+      <flightPhases>
+        <phase class-type="FlightPhase">
+          <name>Invalid</name>
+          <serverPresentPhases>Invalid,NoData</serverPresentPhases>
+          <limitations>
+            <viewMenu>
+              <view>
+                <name>FreeMapRoaming</name>
+                <enable>true</enable>
+              </view>
+              <view>
+                <name>LeftWindow</name>
+                <enable>false</enable>
+              </view>
+              <view>
+                <name>Pilot</name>
+                <enable>false</enable>
+              </view>
+              <view>
+                <name>RightWindow</name>
+                <enable>false</enable>
+              </view>
+              <view>
+                <name>PlaneCentric</name>
+                <enable>false</enable>
+              </view>
+            </viewMenu>
+            <ui>
+              <flightInfoButton>
+                <enable>false</enable>
+              </flightInfoButton>
+              <flyingOverPlaces>
+                <enable>false</enable>
+              </flyingOverPlaces>
+              <airline-route-map>
+                <enable>false</enable>
+              </airline-route-map>
+              <findPlaneButton>
+                <enable>false</enable>
+              </findPlaneButton>
+            </ui>
+          </limitations>
+          <extras>
+            <script>
+              <source>$(SERVER)/$(COMMON)/config/actions/autoplay_web/invalid.xml</source>
+            </script>
+            <mini-map-script>
+              <source>$(SERVER)/$(COMMON)/config/actions/autoplay_web/invalid.xml</source>
+            </mini-map-script>
+          </extras>
+        </phase>
+        <phase class-type="FlightPhase">
+          <name>Non-Cruise</name>
+          <serverPresentPhases>Ascending,Boarding,Taxi-Origin,Descending,Landed,Taxi-Destination</serverPresentPhases>
+          <limitations>
+            <viewMenu>
+              <view>
+                <name>FreeMapRoaming</name>
+                <enable>true</enable>
+              </view>
+              <view>
+                <name>LeftWindow</name>
+                <enable>false</enable>
+              </view>
+              <view>
+                <name>Pilot</name>
+                <enable>false</enable>
+              </view>
+              <view>
+                <name>RightWindow</name>
+                <enable>false</enable>
+              </view>
+              <view>
+                <name>PlaneCentric</name>
+                <enable>true</enable>
+              </view>
+            </viewMenu>
+            <ui>
+              <flightInfoButton>
+                <enable>true</enable>
+              </flightInfoButton>
+              <flyingOverPlaces>
+                <enable>true</enable>
+              </flyingOverPlaces>
+              <airline-route-map>
+                <enable>true</enable>
+              </airline-route-map>
+              <!-- <findPlaneButton>
+						<enable>true</enable>
+					</findPlaneButton> -->
+            </ui>
+          </limitations>
+          <extras>
+            <script>
+              <source>$(SERVER)/$(COMMON)/config/actions/autoplay_web/ascending-descending.xml</source>
+            </script>
+            <mini-map-script>
+              <source>$(SERVER)/$(COMMON)/config/actions/autoplay_web/mini-map.xml</source>
+            </mini-map-script>
+          </extras>
+        </phase>
+        <phase class-type="FlightPhase">
+          <name>Cruise</name>
+          <serverPresentPhases>Cruise</serverPresentPhases>
+          <limitations>
+            <viewMenu>
+              <view>
+                <name>FreeMapRoaming</name>
+                <enable>true</enable>
+              </view>
+              <view>
+                <name>LeftWindow</name>
+                <enable>true</enable>
+              </view>
+              <view>
+                <name>Pilot</name>
+                <enable>true</enable>
+              </view>
+              <view>
+                <name>RightWindow</name>
+                <enable>true</enable>
+              </view>
+              <view>
+                <name>PlaneCentric</name>
+                <enable>true</enable>
+              </view>
+            </viewMenu>
+            <ui>
+              <flightInfoButton>
+                <enable>true</enable>
+              </flightInfoButton>
+              <flyingOverPlaces>
+                <enable>true</enable>
+              </flyingOverPlaces>
+              <airline-route-map>
+                <enable>true</enable>
+              </airline-route-map>
+              <!-- <findPlaneButton>
+						<enable>true</enable>
+					</findPlaneButton> -->
+            </ui>
+          </limitations>
+          <extras>
+            <script>
+              <source>$(SERVER)/$(COMMON)/config/actions/autoplay_web/cruise.xml</source>
+            </script>
+            <mini-map-script>
+              <source>$(SERVER)/$(COMMON)/config/actions/autoplay_web/mini-map.xml</source>
+            </mini-map-script>
+          </extras>
+        </phase>
+      </flightPhases>
+    </flightPhaseList>
+    <fields-resolver class-type="PortalFieldsResolver" config-file="$(SERVER)/$(COMMON)/config/units/units_$(LANG).xml"/>
+  </navigator>
+  <!-- sun navigator not used by web client -->
+  <scene-controller class-type="BasicSceneController" included-from="$(SERVER)/$(COMMON)/config/basic_scene_controller_web.xml">
+    <views>
+      <view class-type="TotalRouteView">
+        <!-- over something significant -->
+        <lat>23</lat>
+        <lon>102</lon>
+        <distance>2e7</distance>
+        <heading>0</heading>
+        <tilt>40</tilt>
+      </view>
+      <view class-type="RoutesMapView">
+        <!-- over airline hub or most important destinations -->
+        <lat>39</lat>
+        <lon>-96</lon>
+        <distance>2e7</distance>
+        <heading>0</heading>
+        <tilt>0</tilt>
+      </view>
+      <view class-type="AroundPlaneView">
+        <angle>-120</angle>
+        <distance>2.8e5</distance>
+        <max-range>4e5</max-range>
+        <min-range>1.4e5</min-range>
+        <tilt>55</tilt>
+        <max-tilt>80</max-tilt>
+        <min-tilt>50</min-tilt>
+      </view>
+      <!-- only available if selected in autoplay -->
+      <view class-type="FollowPlaneView">
+        <angle>-45</angle>
+        <distance>7e4</distance>
+        <tilt>50</tilt>
+      </view>
+    </views>
+  </scene-controller>
+  <model class-type="BasicModel">
+    <globe class-type="Earth">
+      <!-- no elevations available in webapp -->
+      <tessellator class-type="TiledTessellator" included-from="$(SERVER)/$(COMMON)/config/tiled_tessellator_512_web.xml">
+        <detailHint>-0.1</detailHint>
+        <sin-pow>1.0</sin-pow>
+        <ElevationMin>-2000</ElevationMin>
+        <ElevationMax>8850</ElevationMax>
+        <level-set>
+          <sector>
+            <min-lat>-90</min-lat>
+            <max-lat>90</max-lat>
+            <min-lon>-180</min-lon>
+            <max-lon>180</max-lon>
+          </sector>
+          <LevelZeroTileDelta>
+            <lon>36</lon>
+            <lat>36</lat>
+          </LevelZeroTileDelta>
+          <NumLevels>14</NumLevels>
+          <NumEmptyLevels>0</NumEmptyLevels>
+          <tileHeight>14</tileHeight>
+          <tileWidth>14</tileWidth>
+          <SectorResolutionLimits>
+            <SectorResolution>
+              <maxLevelNum>1</maxLevelNum>
+              <sector>
+                <min-lat>72.0</min-lat>
+                <max-lat>90.0</max-lat>
+                <min-lon>-180.0</min-lon>
+                <max-lon>180.0</max-lon>
+              </sector>
+            </SectorResolution>
+            <SectorResolution>
+              <maxLevelNum>3</maxLevelNum>
+              <sector>
+                <min-lat>67.5</min-lat>
+                <max-lat>72.0</max-lat>
+                <min-lon>-180.0</min-lon>
+                <max-lon>180.0</max-lon>
+              </sector>
+            </SectorResolution>
+            <SectorResolution>
+              <maxLevelNum>3</maxLevelNum>
+              <sector>
+                <min-lat>-72.0</min-lat>
+                <max-lat>-67.5</max-lat>
+                <min-lon>-180.0</min-lon>
+                <max-lon>180.0</max-lon>
+              </sector>
+            </SectorResolution>
+            <SectorResolution>
+              <maxLevelNum>1</maxLevelNum>
+              <sector>
+                <min-lat>-90.0</min-lat>
+                <max-lat>-72.0</max-lat>
+                <min-lon>-180.0</min-lon>
+                <max-lon>180.0</max-lon>
+              </sector>
+            </SectorResolution>
+          </SectorResolutionLimits>
+        </level-set>
+        <!-- <tile-cache class-type="BasicMemoryCache">
+		<max-size>100000</max-size>
+	</tile-cache>
+	<geom-cache class-type="BasicMemoryCache">
+		<max-size>1200000</max-size>
+	</geom-cache>
+	<vbo-cache class-type="VboCache">
+		<max-size>600000</max-size>
+	</vbo-cache> -->
+      </tessellator>
+    </globe>
+    <layers class-type="LayerList">
+      <!-- no night view available in webapp -->
+      <layer class-type="SkyBoxLayer" included-from="$(SERVER)/$(COMMON)/config/skybox_layer_web.xml">
+        <name>SkyBox</name>
+        <retriever class-type="FilesRetriever">
+          <url>$(SERVER)/$(COMMON)/download/globe/skybox_web/</url>
+          <root-dir>$(CACHE)/data/globe/skybox_web/</root-dir>
+        </retriever>
+        <xpos>sky_pos_x.jpg</xpos>
+        <xneg>sky_neg_x.jpg</xneg>
+        <ypos>sky_pos_y.jpg</ypos>
+        <yneg>sky_neg_y.jpg</yneg>
+        <zpos>sky_pos_z.jpg</zpos>
+        <zneg>sky_neg_z.jpg</zneg>
+        <scale>0.4e8</scale>
+        <clip-far>20e9</clip-far>
+      </layer>
+      <layer class-type="OneImageLayer" included-from="$(SERVER)/$(COMMON)/config/one_image_map_web.xml">
+        <name>Full Map</name>
+        <retriever class-type="FilesRetriever">
+          <url>$(SERVER)/$(COMMON)/download/globe/</url>
+          <root-dir>$(CACHE)/data/globe/</root-dir>
+        </retriever>
+        <image-file>planet_observer_v2018_2048x1024.jpg</image-file>
+        <tileHeight>14</tileHeight>
+        <tileWidth>14</tileWidth>
+      </layer>
+      <!-- no blending with satellite map patches -->
+      <layer class-type="SimpleTiledImageLayer" included-from="$(SERVER)/$(COMMON)/config/day_map_512_jpg_web.xml">
+        <name>WMS Layer</name>
+        <max-elevation>1.5e7</max-elevation>
+        <retriever get-only="true"/>
+        <tileDelta>
+          <lat>36</lat>
+          <lon>36</lon>
+        </tileDelta>
+        <!-- <tile-size>17</tile-size>  -->
+        <!-- first level of osm maps -->
+        <blend-level>9</blend-level>
+        <blend-percent>50</blend-percent>
+        <levelset-list class-type="LevelSetList" included-from="$(SERVER)/$(COMMON)/config/levelset_list_512_jpg.xml">
+          <levelset class-type="WMSLevelSet" included-from="$(SERVER)/$(COMMON)/config/earth/planet2018_q90_512_36d_lvl_0-4_jpg_direct.xml">
+            <tile-resource-info class-type="XYZTileResourceInfo">
+              <uri-template>https://fp3d-maps.sfo3.cdn.digitaloceanspaces.com/satellite_512/$(DATASET_NAME)/$(Z)/$(Y)/$(Y)_$(X).jpg</uri-template>
+              <datasetName>planet2018_q90_512_36d_lvl_0-4_jpg</datasetName>
+            </tile-resource-info>
+            <level-set>
+              <sector>
+                <min-lat>-90.0</min-lat>
+                <max-lat>90.0</max-lat>
+                <min-lon>-180.0</min-lon>
+                <max-lon>180.0</max-lon>
+              </sector>
+              <NumLevels>5</NumLevels>
+              <NumEmptyLevels>0</NumEmptyLevels>
+              <LevelZeroTileDelta>
+                <lat>36.0</lat>
+                <lon>36.0</lon>
+              </LevelZeroTileDelta>
+              <tileWidth>512</tileWidth>
+              <tileHeight>512</tileHeight>
+              <dataCacheName>planet2018_q90_512_36d_lvl_0-4_jpg</dataCacheName>
+            </level-set>
+          </levelset>
+          <levelset class-type="WMSLevelSet" included-from="$(SERVER)/$(COMMON)/config/earth/planet2018_q90_512_36d_lvl_5_jpg_direct.xml">
+            <tile-resource-info class-type="XYZTileResourceInfo">
+              <uri-template>https://fp3d-maps.sfo3.cdn.digitaloceanspaces.com/satellite_512/$(DATASET_NAME)/$(Z)/$(Y)/$(Y)_$(X).jpg</uri-template>
+              <datasetName>planet2018_q90_512_36d_lvl_5_jpg</datasetName>
+            </tile-resource-info>
+            <level-set>
+              <sector>
+                <min-lat>-90.0</min-lat>
+                <max-lat>90.0</max-lat>
+                <min-lon>-180.0</min-lon>
+                <max-lon>180.0</max-lon>
+              </sector>
+              <NumLevels>6</NumLevels>
+              <NumEmptyLevels>5</NumEmptyLevels>
+              <LevelZeroTileDelta>
+                <lat>36.0</lat>
+                <lon>36.0</lon>
+              </LevelZeroTileDelta>
+              <tileWidth>512</tileWidth>
+              <tileHeight>512</tileHeight>
+              <dataCacheName>planet2018_q90_512_36d_lvl_5_jpg</dataCacheName>
+            </level-set>
+          </levelset>
+          <levelset class-type="WMSLevelSet" included-from="$(SERVER)/$(COMMON)/config/earth/planet2018_q90_512_36d_lvl_6_jpg_direct.xml">
+            <tile-resource-info class-type="XYZTileResourceInfo">
+              <uri-template>https://fp3d-maps.sfo3.cdn.digitaloceanspaces.com/satellite_512/$(DATASET_NAME)/$(Z)/$(Y)/$(Y)_$(X).jpg</uri-template>
+              <datasetName>planet2018_q90_512_36d_lvl_6_jpg</datasetName>
+            </tile-resource-info>
+            <level-set>
+              <sector>
+                <min-lat>-90.0</min-lat>
+                <max-lat>90.0</max-lat>
+                <min-lon>-180.0</min-lon>
+                <max-lon>180.0</max-lon>
+              </sector>
+              <NumLevels>7</NumLevels>
+              <NumEmptyLevels>6</NumEmptyLevels>
+              <LevelZeroTileDelta>
+                <lat>36.0</lat>
+                <lon>36.0</lon>
+              </LevelZeroTileDelta>
+              <tileWidth>512</tileWidth>
+              <tileHeight>512</tileHeight>
+              <dataCacheName>planet2018_q90_512_36d_lvl_6_jpg</dataCacheName>
+            </level-set>
+          </levelset>
+          <levelset class-type="WMSLevelSet" included-from="$(SERVER)/$(COMMON)/config/earth/planet2018_q90_512_36d_lvl_7_jpg_direct.xml">
+            <tile-resource-info class-type="XYZTileResourceInfo">
+              <uri-template>https://fp3d-maps.sfo3.cdn.digitaloceanspaces.com/satellite_512/$(DATASET_NAME)/$(Z)/$(Y)/$(Y)_$(X).jpg</uri-template>
+              <datasetName>planet2018_q90_512_36d_lvl_7_jpg</datasetName>
+            </tile-resource-info>
+            <level-set>
+              <sector>
+                <min-lat>-90.0</min-lat>
+                <max-lat>90.0</max-lat>
+                <min-lon>-180.0</min-lon>
+                <max-lon>180.0</max-lon>
+              </sector>
+              <NumLevels>8</NumLevels>
+              <NumEmptyLevels>7</NumEmptyLevels>
+              <LevelZeroTileDelta>
+                <lat>36.0</lat>
+                <lon>36.0</lon>
+              </LevelZeroTileDelta>
+              <tileWidth>512</tileWidth>
+              <tileHeight>512</tileHeight>
+              <dataCacheName>planet2018_q90_512_36d_lvl_7_jpg</dataCacheName>
+            </level-set>
+          </levelset>
+          <levelset class-type="WMSLevelSet" included-from="$(SERVER)/$(COMMON)/config/earth/planet2018_q90_512_36d_lvl_8_jpg_direct.xml">
+            <tile-resource-info class-type="XYZTileResourceInfo">
+              <uri-template>https://fp3d-maps.sfo3.cdn.digitaloceanspaces.com/satellite_512/$(DATASET_NAME)/$(Z)/$(Y)/$(Y)_$(X).jpg</uri-template>
+              <datasetName>planet2018_q90_512_36d_lvl_8_jpg</datasetName>
+            </tile-resource-info>
+            <level-set>
+              <sector>
+                <min-lat>-90.0</min-lat>
+                <max-lat>90.0</max-lat>
+                <min-lon>-180.0</min-lon>
+                <max-lon>180.0</max-lon>
+              </sector>
+              <NumLevels>9</NumLevels>
+              <NumEmptyLevels>8</NumEmptyLevels>
+              <LevelZeroTileDelta>
+                <lat>36.0</lat>
+                <lon>36.0</lon>
+              </LevelZeroTileDelta>
+              <tileWidth>512</tileWidth>
+              <tileHeight>512</tileHeight>
+              <dataCacheName>planet2018_q90_512_36d_lvl_8_jpg</dataCacheName>
+            </level-set>
+          </levelset>
+        </levelset-list>
+      </layer>
+      <layer class-type="MapTilerImageLayer">
+        <name>MapTiler Layer</name>
+        <access-token>RuzKyEsWaL0z8i2xi7bG</access-token>
+        <levelset-list class-type="LevelSetList" included-from="$(SERVER)/$(COMMON)/config/levelset_list_map_tiler.xml">
+          <levelset class-type="MapTilerLevelSet" included-from="$(SERVER)/$(COMMON)/config/earth/maptiler_lvl_9_13.xml">
+            <serviceURL>https://api.maptiler.com/maps</serviceURL>
+            <style>20e54bb0-889e-4470-bb16-bb77a394b9c4</style>
+            <!-- Optional parameter. When enabled, requests for x2 quality of the tiles -->
+            <hi-dpi>true</hi-dpi>
+            <detailHint>3.2</detailHint>
+            <TextureFormat>jpg</TextureFormat>
+            <level-set>
+              <sector>
+                <min-lat>-85.0511</min-lat>
+                <max-lat>85.0511</max-lat>
+                <min-lon>-180.0</min-lon>
+                <max-lon>180.0</max-lon>
+              </sector>
+              <NumLevels>14</NumLevels>
+              <NumEmptyLevels>9</NumEmptyLevels>
+              <LevelZeroTileDelta>
+                <lat>170.1022</lat>
+                <lon>360</lon>
+              </LevelZeroTileDelta>
+              <tileWidth>512</tileWidth>
+              <tileHeight>512</tileHeight>
+            </level-set>
+          </levelset>
+        </levelset-list>
+      </layer>
+      <!-- Borders -->
+      <layer class-type="BordersLayer" included-from="$(SERVER)/$(COMMON)/config/borders_web/borders_countries.xml">
+        <name>Country borders</name>
+        <elevation>100</elevation>
+        <width>2</width>
+        <color>A7A7A7B3</color>
+        <fileName>adm0_boundary_lines_land.shp</fileName>
+        <!-- 1e6 for placenames with countries, 2e6 is standard -->
+        <min-elevation>2e6</min-elevation>
+        <retriever class-type="FilesRetriever">
+          <url>$(SERVER)/$(COMMON)/download/borders_3d/</url>
+          <root-dir>$(CACHE)/data/borders_3d/</root-dir>
+        </retriever>
+        <style>
+          <color>A7A7A7B3</color>
+          <width>2</width>
+          <max-elevation>16e7</max-elevation>
+          <min-elevation>5e6</min-elevation>
+        </style>
+        <style>
+          <color>A7A7A7B3</color>
+          <width>2</width>
+          <max-elevation>5e6</max-elevation>
+          <!-- 1e6 for placenames with countries, 2e6 is standard -->
+          <min-elevation>2e6</min-elevation>
+        </style>
+      </layer>
+      <layer class-type="BordersLayer" included-from="$(SERVER)/$(COMMON)/config/borders_web/borders_countries_disputed_custom.xml">
+        <name>Country borders disputed</name>
+        <elevation>100</elevation>
+        <!-- <width>2</width>
+	<color>A7A7A766</color> -->
+        <fileName>adm0_boundary_lines_all_disputed.shp</fileName>
+        <dbfFile>adm0_boundary_lines_all_disputed.dbf</dbfFile>
+        <!-- 1e6 for placenames with countries, 2e6 is standard -->
+        <min-elevation>2e6</min-elevation>
+        <retriever class-type="FilesRetriever">
+          <url>$(SERVER)/$(COMMON)/download/borders_3d/</url>
+          <root-dir>$(CACHE)/data/borders_3d/</root-dir>
+        </retriever>
+        <!-- google shows as dashed line -->
+        <region>
+          <style>
+            <!-- 1e6 for placenames with countries, 2e6 is standard -->
+            <min-elevation>2e6</min-elevation>
+            <max-elevation>2e8</max-elevation>
+            <color>A7A7A766</color>
+            <width>2</width>
+            <!-- <dashLength>1.2e4</dashLength>
+			<lineType>dashed</lineType> -->
+          </style>
+          <list>Sudan South Sudan East(Sudan)Border,Sudan South Sudan West(South Sudan)Border,Gibraltar Spain Border,Venezuela Guyana (Venezuela) Border,Guyana Suriname Border,Suriname French Guiana border,Guyana Suriname (Suriname) Border,Suriname French Guiana (Suriname) Border,Republic of the Congo Democratic Republic of the Congo (Republic of the Congo) border,Republic of the Congo Democratic Republic of the Congo (Democratic Republic of the Congo) border,Venezuela Guyana Border,West Bank Jordan Border,India Chinese(China) Border,Abkhazia Border,Ossetia Border,Kosovo Serbian Border,Tajikistan Border,Butan Chinese(Butan) Border,India Chinese(India) Border,Israel Gaza Border,Israel West Bank Border,Israel Golan Syrian Border,Israel Syrian Golan Border,Somolia Border,Egypt Sudan(Sudan) Border,Egypt Sudan(Egypt) Border,South Sudan Kenya(Kenya) Border,Morocco Spain Ceuta Border,Morocco Spain Melilla Border,Cyprus Turkey Buffer Zone,Brazil Uruguay(Uruguay),Brazil Uruguay(Brazil),Tanzania Malawi(Malawi) Border,Butan Chinese(China) Border,Sudan South Sudan East(South Sudan)Border</list>
+        </region>
+        <!-- google shows as solid line -->
+        <region>
+          <style>
+            <!-- 1e6 for placenames with countries, 2e6 is standard -->
+            <min-elevation>2e6</min-elevation>
+            <max-elevation>2e8</max-elevation>
+            <color>A7A7A7CC</color>
+            <width>2</width>
+            <lineType>solid</lineType>
+          </style>
+          <list>Cyprus UK Sovereign Base Area,Ireland UK Boards</list>
+        </region>
+        <!-- google doesn't show -->
+        <!-- Argentine Chilie,Nagorno-Karabakh Border,Korean Buffer Zone,Policario Border,Sudan South Sudan West(Sudan)Border,Tanzania Malawi(Tanzania) Border,South Sudan Kenya(South Sudan) Border,SomaliLand Border,Pridnestrovian Border -->
+        <!-- UAL asked to hide -->
+        <!-- Western Saharan Morroko Border, Indian Combo Border, India China(India) Border, India China(China) Border, Crimean Border, -->
+      </layer>
+      <layer class-type="BordersLayer" included-from="$(SERVER)/$(COMMON)/config/borders_web/borders_adm1_brazil.xml">
+        <name>Brazil ADM1 borders</name>
+        <elevation>100</elevation>
+        <width>2</width>
+        <color>A7A7A7B3</color>
+        <fileName>adm1_brazil.shp</fileName>
+        <!-- 1e6 for placenames with countries, 2e6 is standard -->
+        <min-elevation>2e6</min-elevation>
+        <retriever class-type="FilesRetriever">
+          <url>$(SERVER)/$(COMMON)/download/borders_3d/</url>
+          <root-dir>$(CACHE)/data/borders_3d/</root-dir>
+        </retriever>
+      </layer>
+      <layer class-type="BordersLayer" included-from="$(SERVER)/$(COMMON)/config/borders_web/borders_adm1_canada.xml">
+        <name>Canada ADM1 borders</name>
+        <elevation>100</elevation>
+        <width>2</width>
+        <color>A7A7A7B3</color>
+        <fileName>adm1_canada.shp</fileName>
+        <!-- 1e6 for placenames with countries, 2e6 is standard -->
+        <min-elevation>2e6</min-elevation>
+        <retriever class-type="FilesRetriever">
+          <url>$(SERVER)/$(COMMON)/download/borders_3d/</url>
+          <root-dir>$(CACHE)/data/borders_3d/</root-dir>
+        </retriever>
+      </layer>
+      <layer class-type="BordersLayer" included-from="$(SERVER)/$(COMMON)/config/borders_web/borders_adm1_usa.xml">
+        <name>USA ADM1 borders</name>
+        <elevation>100</elevation>
+        <width>2</width>
+        <color>A7A7A7B3</color>
+        <fileName>adm1_USA.shp</fileName>
+        <!-- 1e6 for placenames with countries, 2e6 is standard -->
+        <min-elevation>2e6</min-elevation>
+        <retriever class-type="FilesRetriever">
+          <url>$(SERVER)/$(COMMON)/download/borders_3d/</url>
+          <root-dir>$(CACHE)/data/borders_3d/</root-dir>
+        </retriever>
+      </layer>
+      <layer class-type="BordersLayer" included-from="$(SERVER)/$(COMMON)/config/borders_web/borders_adm1_usa_canada_close_zoom.xml">
+        <name>Canada and USA ADM1 borders on close zoom</name>
+        <elevation>100</elevation>
+        <width>2</width>
+        <color>A7A7A7B3</color>
+        <fileName>adm_0-1_usa_canada.shp</fileName>
+        <min-elevation>5e5</min-elevation>
+        <max-elevation>2e6</max-elevation>
+        <retriever class-type="FilesRetriever">
+          <url>$(SERVER)/$(COMMON)/download/borders_3d/</url>
+          <root-dir>$(CACHE)/data/borders_3d/</root-dir>
+        </retriever>
+      </layer>
+      <!-- Atmosphere -->
+      <layer class-type="FlatAtmosphereLayer">
+        <name>Atmosphere Layer</name>
+      </layer>
+      <!-- Placenames -->
+      <layer class-type="PlaceNameLayer" config-file="$(SERVER)/$(COMMON)/config/placenames_web/placenames_config_$(LANG).xml"/>
+      <!-- Shadows -->
+      <layer class-type="JetShadowLayer" included-from="$(SERVER)/$(COMMON)/config/jet_shadow_web.xml">
+        <name>JetShadowLayer</name>
+        <fade>0.3</fade>
+        <min-elevation>0</min-elevation>
+        <max-elevation>10e8</max-elevation>
+        <shadowScale>0.7</shadowScale>
+        <shadowAlpha>0.35</shadowAlpha>
+      </layer>
+      <layer class-type="FlightPathLayer" included-from="$(SERVER)/$(COMMON)/config/flightpath_shadow_web.xml">
+        <name>FlightPathShadowLayer</name>
+        <navigator get-only="true"/>
+        <min-elevation>0</min-elevation>
+        <flightPath class-type="ShaderFlightPathShadow">
+          <name>flightpath-shadow</name>
+          <navigator get-only="true"/>
+          <trackColor>00000059</trackColor>
+          <routeColor>00000000</routeColor>
+          <width>12</width>
+          <!-- <keep-constant-size>false</keep-constant-size>
+		<min-size>0.08</min-size>
+		<max-size>0.2</max-size>
+		<min-size-distance>1e5</min-size-distance> -->
+          <size-scaler class-type="DistanceIntervalsScalingAlgorithm">
+            <name>flightpath-shadow-size-scaler</name>
+            <bounds>
+              <bound>
+                <distance>1.4e4</distance>
+                <scale-factor>0.5</scale-factor>
+              </bound>
+              <bound>
+                <distance>2.5e5</distance>
+                <scale-factor>0.4</scale-factor>
+                <scale-factors-slope-factor>1.0</scale-factors-slope-factor>
+              </bound>
+              <bound>
+                <distance>25e6</distance>
+                <scale-factor>0.3</scale-factor>
+                <scale-factors-slope-factor>1.0</scale-factors-slope-factor>
+              </bound>
+            </bounds>
+          </size-scaler>
+        </flightPath>
+      </layer>
+      <!-- Flight path & Origdest -->
+      <layer class-type="FlightPathLayer" included-from="$(SERVER)/$(COMMON)/config/flightpath_layer_web.xml">
+        <name>FlightPathLayer</name>
+        <navigator get-only="true"/>
+        <min-elevation>0</min-elevation>
+        <flightPath class-type="ShaderFlightPath">
+          <name>flight-path</name>
+          <navigator get-only="true"/>
+          <trackColor>FFFFFF99</trackColor>
+          <routeColor>FFFFFF00</routeColor>
+          <elevation-offset>50</elevation-offset>
+          <width>12</width>
+          <!-- <keep-constant-size>false</keep-constant-size>
+		<min-size>0.08</min-size>
+		<max-size>0.2</max-size>
+		<min-size-distance>1e5</min-size-distance> -->
+          <size-scaler class-type="DistanceIntervalsScalingAlgorithm">
+            <name>flightpath-size-scaler</name>
+            <bounds>
+              <bound>
+                <distance>1.4e4</distance>
+                <scale-factor>0.6</scale-factor>
+              </bound>
+              <bound>
+                <distance>2.5e5</distance>
+                <scale-factor>0.5</scale-factor>
+                <scale-factors-slope-factor>1.0</scale-factors-slope-factor>
+              </bound>
+              <bound>
+                <distance>25e6</distance>
+                <scale-factor>0.4</scale-factor>
+                <scale-factors-slope-factor>1.0</scale-factors-slope-factor>
+              </bound>
+            </bounds>
+          </size-scaler>
+        </flightPath>
+      </layer>
+      <layer class-type="OrigDestLayer" included-from="$(SERVER)/$(COMMON)/config/orig_dest_layer_web.xml">
+        <name>OriginDestinationLayer_$(LANG)</name>
+        <placename-layer-name>PlaceNamesLayer_$(LANG)</placename-layer-name>
+        <min-elevation>0</min-elevation>
+        <navigator get-only="true"/>
+        <origin class-type="OBJModelRender">
+          <name>origin-model_$(LANG)</name>
+          <fileName>origin.obj</fileName>
+          <retriever class-type="FilesRetriever">
+            <url>$(SERVER)/$(COMMON)/download/target/</url>
+            <root-dir>$(CACHE)/data/target/</root-dir>
+          </retriever>
+          <elevation-offset>0</elevation-offset>
+          <min-size>0.15</min-size>
+          <max-size>7</max-size>
+          <min-size-distance>7e4</min-size-distance>
+          <projected-shape>model</projected-shape>
+          <slope-factor>0.1</slope-factor>
+          <size-scaler class-type="DistanceIntervalsScalingAlgorithm">
+            <name>model-size-scaler</name>
+            <bounds>
+              <bound>
+                <distance>7e4</distance>
+                <scale-factor>0.3</scale-factor>
+              </bound>
+              <bound>
+                <distance>1e6</distance>
+                <scale-factor>0.2</scale-factor>
+                <scale-factors-slope-factor>1.0</scale-factors-slope-factor>
+              </bound>
+              <bound>
+                <distance>10e6</distance>
+                <scale-factor>0.15</scale-factor>
+                <scale-factors-slope-factor>1.0</scale-factors-slope-factor>
+              </bound>
+            </bounds>
+          </size-scaler>
+        </origin>
+        <destination class-type="OBJModelRender">
+          <name>destination-model_$(LANG)</name>
+          <fileName>destination.obj</fileName>
+          <retriever class-type="FilesRetriever">
+            <url>$(SERVER)/$(COMMON)/download/target/</url>
+            <root-dir>$(CACHE)/data/target/</root-dir>
+          </retriever>
+          <elevation-offset>0</elevation-offset>
+          <min-size>0.15</min-size>
+          <max-size>7</max-size>
+          <min-size-distance>7e4</min-size-distance>
+          <projected-shape>model</projected-shape>
+          <slope-factor>0.1</slope-factor>
+          <size-scaler class-type="DistanceIntervalsScalingAlgorithm">
+            <name>model-size-scaler</name>
+            <bounds>
+              <bound>
+                <distance>7e4</distance>
+                <scale-factor>0.3</scale-factor>
+              </bound>
+              <bound>
+                <distance>1e6</distance>
+                <scale-factor>0.2</scale-factor>
+                <scale-factors-slope-factor>1.0</scale-factors-slope-factor>
+              </bound>
+              <bound>
+                <distance>10e6</distance>
+                <scale-factor>0.15</scale-factor>
+                <scale-factors-slope-factor>1.0</scale-factors-slope-factor>
+              </bound>
+            </bounds>
+          </size-scaler>
+        </destination>
+        <label-origin>
+          <service-name>iata</service-name>
+          <label>{{origin.IATA|origin.ICAO|origin.city}}</label>
+        </label-origin>
+        <label-destination>
+          <service-name>iata</service-name>
+          <label>{{destination.IATA|destination.ICAO|destination.city}}</label>
+        </label-destination>
+      </layer>
+      <!-- TripBits destinations -->
+      <layer class-type="POILayer" included-from="$(SERVER)/$(COMMON)/config/tripbits/poi_config.xml">
+        <name>POILayer</name>
+        <retriever class-type="FilesRetriever">
+          <url>$(SERVER)/$(COMMON)/download/pins/</url>
+          <root-dir>$(CACHE)/data/pins/</root-dir>
+        </retriever>
+        <serviceURL>$(SERVER)/$(POST_SERVER)/wfs</serviceURL>
+        <HttpURL>$(SERVER)</HttpURL>
+        <retriever get-only="true"/>
+        <objectsLimiter>-1</objectsLimiter>
+        <mem-cache class-type="BasicMemoryCache">
+          <max-size>4000000</max-size>
+        </mem-cache>
+        <services>
+          <!-- Destinations -->
+          <service>
+            <id>10200</id>
+            <full_name>ual_tripbits_0</full_name>
+            <!-- marker to connect POI-like destinations to TripBits cities -->
+            <action-type>tripbits</action-type>
+            <sector>
+              <min-lat>-90.0</min-lat>
+              <max-lat>90.0</max-lat>
+              <min-lon>-180.0</min-lon>
+              <max-lon>180.0</max-lon>
+            </sector>
+            <grid>
+              <lat>45</lat>
+              <lon>45</lon>
+            </grid>
+            <anchors>
+              <horizontal>
+                <icon>center</icon>
+                <!-- image percent - use if no RTL lang in the config -->
+                <!-- <offset>-15</offset> -->
+              </horizontal>
+              <vertical>
+                <icon>bottom</icon>
+                <!-- image percent - use if no RTL lang in the config -->
+                <!-- <offset>10</offset> -->
+              </vertical>
+            </anchors>
+            <minDistance>2e4</minDistance>
+            <maxDistance>20e6</maxDistance>
+            <iconPressed>tb_pin_city_active.png</iconPressed>
+            <iconUnpressed>tb_pin_city.png</iconUnpressed>
+            <iconHovered>tb_pin_city_hover.png</iconHovered>
+            <height>14</height>
+            <width>10</width>
+            <clickable-box>200</clickable-box>
+          </service>
+          <service>
+            <id>10200</id>
+            <full_name>ual_tripbits_1</full_name>
+            <!-- marker to connect POI-like destinations to TripBits cities -->
+            <action-type>tripbits</action-type>
+            <sector>
+              <min-lat>-90.0</min-lat>
+              <max-lat>90.0</max-lat>
+              <min-lon>-180.0</min-lon>
+              <max-lon>180.0</max-lon>
+            </sector>
+            <grid>
+              <lat>45</lat>
+              <lon>45</lon>
+            </grid>
+            <anchors>
+              <horizontal>
+                <icon>center</icon>
+                <!-- image percent - use if no RTL lang in the config -->
+                <!-- <offset>-15</offset> -->
+              </horizontal>
+              <vertical>
+                <icon>bottom</icon>
+                <!-- image percent - use if no RTL lang in the config -->
+                <!-- <offset>10</offset> -->
+              </vertical>
+            </anchors>
+            <minDistance>2e4</minDistance>
+            <maxDistance>10e6</maxDistance>
+            <iconPressed>tb_pin_city_active.png</iconPressed>
+            <iconUnpressed>tb_pin_city.png</iconUnpressed>
+            <iconHovered>tb_pin_city_hover.png</iconHovered>
+            <height>14</height>
+            <width>10</width>
+            <clickable-box>200</clickable-box>
+          </service>
+          <service>
+            <id>10200</id>
+            <full_name>ual_tripbits_2</full_name>
+            <!-- marker to connect POI-like destinations to TripBits cities -->
+            <action-type>tripbits</action-type>
+            <sector>
+              <min-lat>-90.0</min-lat>
+              <max-lat>90.0</max-lat>
+              <min-lon>-180.0</min-lon>
+              <max-lon>180.0</max-lon>
+            </sector>
+            <grid>
+              <lat>45</lat>
+              <lon>45</lon>
+            </grid>
+            <anchors>
+              <horizontal>
+                <icon>center</icon>
+                <!-- image percent - use if no RTL lang in the config -->
+                <!-- <offset>-15</offset> -->
+              </horizontal>
+              <vertical>
+                <icon>bottom</icon>
+                <!-- image percent - use if no RTL lang in the config -->
+                <!-- <offset>10</offset> -->
+              </vertical>
+            </anchors>
+            <minDistance>2e4</minDistance>
+            <maxDistance>6e6</maxDistance>
+            <iconPressed>tb_pin_city_active.png</iconPressed>
+            <iconUnpressed>tb_pin_city.png</iconUnpressed>
+            <iconHovered>tb_pin_city_hover.png</iconHovered>
+            <height>14</height>
+            <width>10</width>
+            <clickable-box>200</clickable-box>
+          </service>
+          <service>
+            <id>10200</id>
+            <full_name>ual_tripbits_3</full_name>
+            <!-- marker to connect POI-like destinations to TripBits cities -->
+            <action-type>tripbits</action-type>
+            <sector>
+              <min-lat>-90.0</min-lat>
+              <max-lat>90.0</max-lat>
+              <min-lon>-180.0</min-lon>
+              <max-lon>180.0</max-lon>
+            </sector>
+            <grid>
+              <lat>45</lat>
+              <lon>45</lon>
+            </grid>
+            <anchors>
+              <horizontal>
+                <icon>center</icon>
+                <!-- image percent - use if no RTL lang in the config -->
+                <!-- <offset>-15</offset> -->
+              </horizontal>
+              <vertical>
+                <icon>bottom</icon>
+                <!-- image percent - use if no RTL lang in the config -->
+                <!-- <offset>10</offset> -->
+              </vertical>
+            </anchors>
+            <minDistance>2e4</minDistance>
+            <maxDistance>3e6</maxDistance>
+            <iconPressed>tb_pin_city_active.png</iconPressed>
+            <iconUnpressed>tb_pin_city.png</iconUnpressed>
+            <iconHovered>tb_pin_city_hover.png</iconHovered>
+            <height>14</height>
+            <width>10</width>
+            <clickable-box>200</clickable-box>
+          </service>
+          <service>
+            <id>10200</id>
+            <full_name>ual_tripbits_4</full_name>
+            <!-- marker to connect POI-like destinations to TripBits cities -->
+            <action-type>tripbits</action-type>
+            <sector>
+              <min-lat>-90.0</min-lat>
+              <max-lat>90.0</max-lat>
+              <min-lon>-180.0</min-lon>
+              <max-lon>180.0</max-lon>
+            </sector>
+            <grid>
+              <lat>45</lat>
+              <lon>45</lon>
+            </grid>
+            <anchors>
+              <horizontal>
+                <icon>center</icon>
+                <!-- image percent - use if no RTL lang in the config -->
+                <!-- <offset>-15</offset> -->
+              </horizontal>
+              <vertical>
+                <icon>bottom</icon>
+                <!-- image percent - use if no RTL lang in the config -->
+                <!-- <offset>10</offset> -->
+              </vertical>
+            </anchors>
+            <minDistance>2e4</minDistance>
+            <maxDistance>1.2e6</maxDistance>
+            <iconPressed>tb_pin_city_active.png</iconPressed>
+            <iconUnpressed>tb_pin_city.png</iconUnpressed>
+            <iconHovered>tb_pin_city_hover.png</iconHovered>
+            <height>14</height>
+            <width>10</width>
+            <clickable-box>200</clickable-box>
+          </service>
+          <service>
+            <id>10200</id>
+            <full_name>ual_tripbits_5</full_name>
+            <!-- marker to connect POI-like destinations to TripBits cities -->
+            <action-type>tripbits</action-type>
+            <sector>
+              <min-lat>-90.0</min-lat>
+              <max-lat>90.0</max-lat>
+              <min-lon>-180.0</min-lon>
+              <max-lon>180.0</max-lon>
+            </sector>
+            <grid>
+              <lat>45</lat>
+              <lon>45</lon>
+            </grid>
+            <anchors>
+              <horizontal>
+                <icon>center</icon>
+                <!-- image percent - use if no RTL lang in the config -->
+                <!-- <offset>-15</offset> -->
+              </horizontal>
+              <vertical>
+                <icon>bottom</icon>
+                <!-- image percent - use if no RTL lang in the config -->
+                <!-- <offset>10</offset> -->
+              </vertical>
+            </anchors>
+            <minDistance>2e4</minDistance>
+            <maxDistance>3.2e5</maxDistance>
+            <iconPressed>tb_pin_city_active.png</iconPressed>
+            <iconUnpressed>tb_pin_city.png</iconUnpressed>
+            <iconHovered>tb_pin_city_hover.png</iconHovered>
+            <height>14</height>
+            <width>10</width>
+            <clickable-box>200</clickable-box>
+          </service>
+        </services>
+      </layer>
+      <!-- TripBits street level locations - for layer order -->
+      <layer class-type="TripbitsLayer">
+        <name>Tripbits</name>
+      </layer>
+      <!-- Jet -->
+      <layer class-type="JetLayer" included-from="$(SERVER)/$(COMMON)/config/jet_layer_web.xml">
+        <name>JetLayer</name>
+        <min-elevation>0</min-elevation>
+        <max-elevation>10e8</max-elevation>
+        <jet>
+          <name>jet-model</name>
+          <elevation-offset>5000</elevation-offset>
+          <keep-constant-size>false</keep-constant-size>
+          <!-- <size> is relevant only when <keep-constant-size> = false -->
+          <size>1.0</size>
+          <size-scaler class-type="DistanceIntervalsScalingAlgorithm">
+            <name>jet-size-scaler</name>
+            <bounds>
+              <bound>
+                <distance>1e5</distance>
+                <scale-factor>0.2</scale-factor>
+              </bound>
+              <bound>
+                <distance>10e6</distance>
+                <scale-factor>0.08</scale-factor>
+                <scale-factors-slope-factor>10.0</scale-factors-slope-factor>
+              </bound>
+            </bounds>
+          </size-scaler>
+          <retriever class-type="FilesRetriever">
+            <url>$(SERVER)/$(COMMON)/download/jetlayer/web/</url>
+            <root-dir>$(CACHE)/data/jetlayer/web/</root-dir>
+          </retriever>
+        </jet>
+      </layer>
+      <!-- OSM copyright -->
+      <layer class-type="CopyrightCheckerLayer">
+        <name>Copyright Checker Layer</name>
+        <level>9</level>
+      </layer>
+      <!-- Highlights -->
+      <layer class-type="HighlightsLayer">
+        <name>Highlights Layer</name>
+        <!-- hide from the first osm level -->
+        <level>9</level>
+      </layer>
+      <!-- Map tile labels -->
+      <!-- <layer class-type="LabelTiledLayer">
+				<name>Label Layers</name>
+				<tile-outline>
+					<enable>true</enable>
+				</tile-outline>
+				<mem-cache class-type="BasicMemoryCache">
+					<max-size>100000</max-size>
+				</mem-cache>
+				<font>14_NotoSans-Regular</font>
+			</layer> -->
+    </layers>
+  </model>
+  <!-- tile retriever not used by web client -->
+</root>

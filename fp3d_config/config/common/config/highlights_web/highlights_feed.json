@@ -1,0 +1,269 @@
+{
+	"feed": [
+		{
+			"COMMENT": "TB POI",
+			"typeId": "JSONPath",
+			"id": 1,
+			"data": {
+				"COMMENT": "$(POINT) MEANS DESTINATION AND IS TAKEN AS DEFAULT, PRIORITY 2 ALSO NEGOTIATED TO BE DEFAULT",
+				"cacheBreak": false,
+				"url": "$(SERVER)/fp3d_fcgi/tripbits/v4/pois/nearby?point=$(POINT)&range=75&priority=2&lang=$(LANG)"
+			},
+			"COMMENT2": "JSONPath MASK TO SELECT PARAMS FROM THE RESULT OF THE QUERY, * = N+1 WITH EVERY CYCLE",
+			"title": "$.items[*].city",
+			"description": "$.items[*].name",
+			"image": {
+				"url": "$(SERVER)/$(COMMON)/download/highlights_web/tb_ual_pin.svg"
+			},
+			"COMMENT3": "SHOW POI EVERY 1st CYCLE, ALSO SHOW ON THE VERY 1st CYCLE",
+			"settings": {
+				"display": {
+					"interval": 1,
+					"onFirstCycle": true,
+					"shuffle": true
+				}
+			},
+			"COMMENT4": "ACTION MEANS THE HIGHTLIGHT IS CLICKABLE, DIRECTIONS ABOUT WHICH PAGE TO OPEN",
+			"action": {
+				"typeId": "tripbitsPoi",
+				"payload": {
+					"destination": "$.items[*].geotag_ids[0]",
+					"video": "$.items[*].video.id"
+				}
+			},
+			"COMMENT5": "SET WHICH DATA TO REGISTER IN LOGS",
+			"analytics": {
+				"payload": {
+					"poiId": "$.items[*].id"
+				},
+				"target": "tripbits"
+			}
+		},
+		{
+			"COMMENT": "Educational Highlight 1 (Click)",
+			"typeId": "JSONPath",
+			"id": 3,
+			"data": {
+				"cacheBreak": false,
+				"url": "$(SERVER)/$(COMMON)/config/highlights_web/translations/translations_$(LANG).json"
+			},
+			"title": "$.items[*].text1.title",
+			"description": "$.items[*].text1.description",
+			"image": {
+				"url": "$(SERVER)/$(COMMON)/download/highlights_web/click.svg"
+			},
+			"settings": {
+				"display": {
+					"interval": 5,
+					"onFirstCycle": false
+				}
+			},
+			"COMMENT2": "NON-CLICKABLE HIGHLIGHT",
+			"action": {}
+		},
+		{
+			"COMMENT": "A bubble with GAM GPT UAL ad",
+			"typeId": "ad",
+			"id": 299,
+			"settings": {
+				"display": {
+					"interval": 1,
+					"onFirstCycle": true
+				},
+				"adService": "gpt",
+				"adConfig": {
+					"adUnitPath": "23002848811/PORTAL_MAP_BE_WEB/PORTAL_MAP_FLIGHT_COMPANION",
+					"containerId": "Portal_bb_1_web_map_fc",
+					"targeting": {
+						"Sub": "flight_companion"
+					},
+					"size": [
+						320,
+						50
+					]
+				}
+			},
+			"analytics": {
+				"payload": {
+					"adService": "gpt"
+				},
+				"target": "external"
+			}
+		},
+		{
+			"COMMENT": "Advert for specific destination",
+			"id": 122,
+			"typeId": "JSONPath",
+			"data": {
+				"cacheBreak": false,
+				"url": "$(SERVER)/$(COMMON)/config/highlights_web/adverts/advert_$(DEST_AIRPORT_CODE).json"
+			},
+			"availability": {
+				"url": "$(SERVER)/$(COMMON)/config/highlights_web/adverts/advert_available.json",
+				"key": "airports",
+				"macro": "DEST_AIRPORT_CODE"
+			},
+			"title": "$.items[*].*.title",
+			"description": "$.items[*].*.description",
+			"image": {
+				"url": ""
+			},
+			"settings": {
+				"display": {
+					"interval": 2,
+					"onFirstCycle": true,
+					"shuffle": true
+				}
+			},
+			"action": {
+				"typeId": "link",
+				"payload": {
+					"url": "$.items[*].*.link"
+				}
+			},
+			"analytics": {
+				"target": "external",
+				"payload": {
+					"title": "$.items[*].*.title",
+					"url": "$.items[*].*.link"
+				}
+			}
+		},
+		{
+			"COMMENT": "Microsite",
+			"typeId": "JSONPath",
+			"id": 7,
+			"data": {
+				"cacheBreak": false,
+				"url": "$(SERVER)/fp3d_fcgi/tripbits/v4/microsites/nearby?point=$(POINT)&range=241&lang=$(LANG)"
+			},
+			"title": "$.items[*].title",
+			"description": "$.items[*].subtitle",
+			"image": {
+				"url": "$(SERVER)/$(COMMON)/download/highlights_web/tb_ual_pin.svg"
+			},
+			"settings": {
+				"display": {
+					"interval": 1,
+					"onFirstCycle": true,
+					"shuffle": true
+				}
+			},
+			"action": {
+				"typeId": "tripbitsMicrosite",
+				"payload": {
+					"destination": "$.items[*].geotags[0]",
+					"microsite": {
+						"id": "$.items[*].id",
+						"uri": "$.items[*].uri"
+					}
+				}
+			},
+			"analytics": {
+				"payload": {
+					"micrositeId": "$.items[*].id",
+					"geotagId": "$.items[*].geotags[0]"
+				},
+				"target": "tripbits"
+			}
+		},
+		{
+			"COMMENT": "Flight Information from flight_info.xml",
+			"typeId": "flightInfo",
+			"id": 9,
+			"image": {
+				"url": "$(SERVER)/$(COMMON)/download/highlights_web/aircraft.svg"
+			},
+			"settings": {
+				"display": {
+					"interval": 1,
+					"onFirstCycle": true
+				}
+			},
+			"action": {
+				"typeId": "flightInfo",
+				"payload": null
+			},
+			"analytics": {
+				"payload": "",
+				"target": ""
+			}
+		},
+		{
+			"COMMENT": "Educational Highlight 2 (Swipe Up)",
+			"typeId": "JSONPath",
+			"id": 6,
+			"data": {
+				"cacheBreak": false,
+				"url": "$(SERVER)/$(COMMON)/config/highlights_web/translations/translations_$(LANG).json"
+			},
+			"title": "$.items[*].text2.title",
+			"description": "$.items[*].text2.description",
+			"image": {
+				"url": "$(SERVER)/$(COMMON)/download/highlights_web/swipe_up.svg"
+			},
+			"settings": {
+				"display": {
+					"interval": 3,
+					"onFirstCycle": true
+				}
+			},
+			"action": {}
+		},
+		{
+			"COMMENT": "TB Playlist",
+			"typeId": "JSONPath",
+			"id": 5,
+			"data": {
+				"cacheBreak": false,
+				"url": "$(SERVER)/fp3d_fcgi/tripbits/v4/geotags/nearby?point=$(POINT)&range=75&limit=1&lang=$(LANG)"
+			},
+			"title": "$.items[0].name",
+			"description": "$.items[0].hashtags[*].title",
+			"image": {
+				"url": "$(SERVER)/$(COMMON)/download/highlights_web/tb_ual_pin.svg"
+			},
+			"settings": {
+				"display": {
+					"interval": 1,
+					"onFirstCycle": false,
+					"shuffle": true
+				}
+			},
+			"action": {
+				"typeId": "tripbitsPlaylist",
+				"payload": {
+					"destination": "$.items[0].id",
+					"hashtag": "$.items[0].hashtags[*].id"
+				}
+			},
+			"analytics": {
+				"payload": {
+					"hashtagId": "$.items[0].hashtags[*].id"
+				},
+				"target": "tripbits"
+			}
+		},
+		{
+			"COMMENT": "Educational Highlight 3 (Swipe Down)",
+			"typeId": "JSONPath",
+			"id": 8,
+			"data": {
+				"cacheBreak": false,
+				"url": "$(SERVER)/$(COMMON)/config/highlights_web/translations/translations_$(LANG).json"
+			},
+			"title": "$.items[*].text3.title",
+			"description": "$.items[*].text3.description",
+			"image": {
+				"url": "$(SERVER)/$(COMMON)/download/highlights_web/swipe_down.svg"
+			},
+			"settings": {
+				"display": {
+					"interval": 7,
+					"onFirstCycle": false
+				}
+			},
+			"action": {}
+		}
+	]
+}

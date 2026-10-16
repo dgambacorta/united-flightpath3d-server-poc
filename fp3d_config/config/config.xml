@@ -1,0 +1,146 @@
+<root>
+	<version>3</version>
+	<common-folder>fp3d_config/config/common</common-folder>
+	<cache-folder/>
+	<dump-url>$(SERVER)/fp3d_fcgi-php/portal/public/index.php?_url=/index/dump&amp;fn=</dump-url>
+	<post-server>fp3d_fcgi/wms</post-server>
+	<dynamic-content-path>fp3d_fcgi-php/portal</dynamic-content-path>
+
+	<languages>
+		<locale>
+			<code>en</code>
+			<default>true</default>
+			<name>English</name>
+			<native-name>English</native-name>
+			<!-- default units are set via app_settings.xml -->
+			<!-- <unit-systems>
+				<primary>metric</primary>
+				<secondary>imperial</secondary>
+			</unit-systems> -->
+			<aliases>eng:en_US:en_GB</aliases>
+		</locale>
+		<locale>
+			<code>cn</code>
+			<default>false</default>
+			<name>Chinese Simplified</name>
+			<native-name>简体中文</native-name>
+			<!-- default units are set via app_settings.xml -->
+			<!-- <unit-systems>
+				<primary>metric</primary>
+				<secondary>imperial</secondary>
+			</unit-systems> -->
+			<aliases>cn:zh:zh_CN:hk:zhk:chi:zh-hans:zh-Hans</aliases>
+		</locale>
+		<locale>
+			<code>de</code>
+			<default>false</default>
+			<name>German</name>
+			<native-name>Deutsch</native-name>
+			<!-- default units are set via app_settings.xml -->
+			<!-- <unit-systems>
+				<primary>metric</primary>
+				<secondary>imperial</secondary>
+			</unit-systems> -->
+			<aliases>de:deu:ger</aliases>
+		</locale>
+		<locale>
+			<code>es</code>
+			<default>false</default>
+			<name>Spanish</name>
+			<native-name>Español</native-name>
+			<!-- default units are set via app_settings.xml -->
+			<!-- <unit-systems>
+				<primary>metric</primary>
+				<secondary>imperial</secondary>
+			</unit-systems> -->
+			<aliases>es:spa:es_US:sp:lsp:es_ES</aliases>
+		</locale>
+		<locale>
+			<code>fr</code>
+			<default>false</default>
+			<name>French</name>
+			<native-name>Français</native-name>
+			<!-- default units are set via app_settings.xml -->
+			<!-- <unit-systems>
+				<primary>metric</primary>
+				<secondary>imperial</secondary>
+			</unit-systems> -->
+			<aliases>fr:fra:fre</aliases>
+		</locale>
+		<locale>
+			<code>jp</code>
+			<default>false</default>
+			<name>Japanese</name>
+			<native-name>日本語</native-name>
+			<!-- default units are set via app_settings.xml -->
+			<!-- <unit-systems>
+				<primary>metric</primary>
+				<secondary>imperial</secondary>
+			</unit-systems> -->
+			<aliases>jp:ja:jpn:jpd:ja_JP</aliases>
+		</locale>
+		<locale>
+			<code>ko</code>
+			<default>false</default>
+			<name>Korean</name>
+			<native-name>한국어</native-name>
+			<!-- default units are set via app_settings.xml -->
+			<!-- <unit-systems>
+				<primary>metric</primary>
+				<secondary>imperial</secondary>
+			</unit-systems> -->
+			<aliases>ko:kor</aliases>
+		</locale>
+		<locale>
+			<code>pt</code>
+			<default>false</default>
+			<name>Brazilian Portuguese</name>
+			<native-name>Português</native-name>
+			<!-- default units are set via app_settings.xml -->
+			<!-- <unit-systems>
+				<primary>metric</primary>
+				<secondary>imperial</secondary>
+			</unit-systems> -->
+			<aliases>pbr:por:pt_BR:bpt:ptg:pt-br</aliases>
+		</locale>
+		<locale>
+			<code>zz</code>
+			<default>false</default>
+			<name>Traditional Chinese (Hong Kong)</name>
+			<native-name>繁體中文</native-name>
+			<!-- default units are set via app_settings.xml -->
+			<!-- <unit-systems>
+				<primary>metric</primary>
+				<secondary>imperial</secondary>
+			</unit-systems> -->
+			<aliases>zho:zh-Hant:zh-hant</aliases>
+		</locale>
+	</languages>
+
+	<config-webgl>
+		<routes>
+			<route>
+				<!-- http://$(SERVER)/fp3d-webapp/?r=interactive_webapp -->
+				<name>interactive_webapp</name>
+				<folder>config/config_web</folder>
+			</route>
+		</routes>
+	</config-webgl>
+
+	<!-- analytics -->
+	<user-activity-log>
+        <enabled>true</enabled>
+		<!-- logs will be registered by customer-name; if the logs are not only to be collected but also viewed then ask Zulfiya or Elena R. to add the customer to the db -->
+		<!-- use different names for customers per vendor: AFR-PAC, AFR-SPI, AFR-other -->
+		<customer-name>UAL-CLOUD</customer-name>
+		<!-- offload -->
+		<endpoint-internal>
+			<url>$(SERVER)/fp3d_fcgi/portal/v2/tracker</url>
+		</endpoint-internal>
+		<!-- cloud storage -->
+		<!-- <endpoint>
+			<url>https://datahub.flightpath3d.com/analytics/main/</url>
+			<token>dh4jvVknsogynTahkjbEub59n3kOsPabryf</token>
+		</endpoint> -->
+	</user-activity-log>
+</root>
